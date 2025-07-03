@@ -1,0 +1,20 @@
+--- a/install.sh
++++ b/install.sh
+@@ -137,7 +137,7 @@ fi
+ 
+ TAR="tar"
+ 
+-if [ \( "$WHOAMI" != "root" \) ]; then
++if [ \( "$USER" != "root" \) ]; then
+   TAR_OPTIONS="-xf"
+ else
+   TAR_OPTIONS="-xpf"
+@@ -420,7 +420,7 @@ GROUP_USERID=`id -g -nr`
+ USERID=`id -u -n`
+ 
+ # logged in as root and files writable? Make files  belong to this account.
+-if [ $(whoami)="root" -a -w . ]; then
++if [ "$USER"="root" -a -w . ]; then
+     chown -R $USERID:$GROUP_USERID idl$IDL_VERSION > /dev/null 2>&1;
+     chown -R $USERID:$GROUP_USERID license > /dev/null 2>&1;
+     chmod 755 idl$IDL_VERSION > /dev/null 2>&1;
